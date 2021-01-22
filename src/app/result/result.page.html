@@ -1,0 +1,106 @@
+<ion-content class="ion-padding">
+
+  <div>
+    <table class="filter-container">
+      <tbody>
+        <tr>
+          <td colspan="7" class="main-nav">
+            <div style="display: inline-block;	float:left; padding:14px;">
+              <a (click)="backToHome();" class="btn-back"> <img src="./assets/icon/back.svg" width="20px;" /> BACK </a>
+            </div>
+            <div class="main-nav-head" style="margin-bottom:9px; margin-left: -100px;">
+              RESULT
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="column" style="width: 25%">&nbsp;</div>
+      <div class="column"
+        style="width:50%; background-color:#eaeaea; padding:10px; border-radius:5px;margin-top:10px; box-shadow: 5px 5px 5px grey;">
+        <table class="filter-container">
+          <tbody>
+            <tr>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getResults('Last 7 days');"> Last 7 days </a>
+                </div>
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getResults('Yesterday');"> Yesterday </a>
+                </div>
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getResults('Today');"> Today's </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="filter-container">
+          <tbody>
+            <tr>
+              <td>
+                <input [(ngModel)]="fromDate" placeholder="{{appConstants.fromDate}}" type="text" readonly
+                  (click)="openFromDatePicker();">
+              </td>
+              <td>
+                <input [(ngModel)]="toDate" placeholder="{{appConstants.toDate}}" type="text" readonly
+                  (click)="openToDatePicker();">
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-grad" (click)="getResults('By Date');"> Search </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column" style="width: 25%">&nbsp;</div>
+    </div>
+  </div>
+
+  <div style="height: 500px;overflow-y: auto;min-height: 500px; top: 10px;">
+    <h3 style="text-align: center; margin-top: 20;">{{this.reportName}}</h3>
+    <table class="report-tabel">
+      <tbody>
+        <tr>
+          <th>{{appConstants.srNo}}</th>
+          <th>{{appConstants.date}}</th>
+          <th>{{appConstants.time}}</th>
+          <th>{{appConstants.winningNo}}</th>
+
+        </tr>
+        <tr *ngFor=" let result of resultsArr; let i=index;">
+          <td>{{i+1}}</td>
+          <td>{{ utility.convertNoIntoDate(result.drawId) | date:'dd-MM-yyyy'}}</td>
+          <td> {{ utility.convertNoIntoDate(result.drawId) | date:'hh:mm:ss a'}}</td>
+          <td>{{result.winningNo}}</td>
+        </tr>
+
+        <tr *ngIf="resultsArr.length === 0">
+          <td colspan="4">No Data Found</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+</ion-content>
+<!-- <ion-footer *ngIf="reportsArr.length !== 0">
+  <div class="row">
+    <div class="column" style="width: 45%">&nbsp;</div>
+    <div class="column" style="width:10%;">
+      <div class="column bottom-but" style="text-align: center;">
+        <a class="btn-bottom" style="width: 100px;" (click)="getReportsPrint();"> {{appConstants.print}} </a>
+      </div>
+    </div>
+    <div class="column" style="width: 45%">&nbsp;</div>
+  </div>
+
+</ion-footer> -->

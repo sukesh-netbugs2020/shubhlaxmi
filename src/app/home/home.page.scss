@@ -1,0 +1,42 @@
+.empty-input {
+  background: white;
+}
+
+.filled-input {
+  background: red;
+}
+
+.headBackground {
+  background: red;
+  color: white;
+}
+
+.center-wheel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.agent-name {
+  display: inline-block;
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.border-primary{
+  border: #db5201 2px solid;
+  
+}
+
+.bg-primary{
+  background-color: #db5201;
+}
+
+.bg-light{
+  background-color: white;
+}

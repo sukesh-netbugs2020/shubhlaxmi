@@ -1,0 +1,83 @@
+
+
+@media screen and (min-width: 760px) {
+  // this css will only be used when the screen size is min 800px
+
+  ion-card {
+    position: absolute;
+    width: 30%;
+    left: 35%;
+    background: orange;
+    margin-top: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    ion-label {
+      color: white;
+      font-weight: bold;
+    }
+
+    ion-button {
+      width: 30%;
+      height: 45px;
+      --vertical-align: middle;
+      --padding-start: 5px;
+      --padding-end: 5px;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+    }
+  }
+
+  ion-grid {
+    width: 40%;
+    padding: 15px;
+  }
+
+  ion-card ion-grid {
+    width: 100%;
+  }
+}
+
+/* Small devices such as phone */
+@media (max-width: 567px) {
+  ion-card {
+    position: absolute;
+    width: 100%;
+    background: orange;
+    margin-top: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    ion-label {
+      color: white;
+      font-weight: bold;
+    }
+
+    ion-button {
+      height: 45px;
+      --vertical-align: middle;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+    }
+  }
+}
+
+ion-textarea,
+ion-input,
+ion-select,
+ionic-selectable {
+border: 1px solid lightgrey;
+color: black;
+border-radius: 4px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-left: 5px;
+background: white;
+}
+
+ion-content {
+  --background: #fff url("../../../assets/img/loginback.jpg") no-repeat center
+    center / cover;
+}

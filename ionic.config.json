@@ -1,0 +1,7 @@
+{
+  "name": "spinwheel",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

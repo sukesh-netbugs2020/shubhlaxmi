@@ -1,0 +1,62 @@
+<ion-content>
+  <!--  <ion-card>
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-label position="floating">{{appConstants.operatorId}}</ion-label>
+          <ion-input type="email" placeholder="{{appConstants.enterOperatorId}}" [(ngModel)]="operatorId">
+          </ion-input>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-label position="floating">{{appConstants.password}}</ion-label>
+          <ion-input type="password" placeholder="{{appConstants.enterPassword}}" [(ngModel)]="password">
+          </ion-input>
+        </ion-col>
+
+        <ion-col size="12" style="text-align: center;">
+          <ion-button href="/home" shape="round" (click)="btnSubmit();" color="danger">{{appConstants.submit}}
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card> -->
+
+  <a href="{{apiService.fileUrl}}"><button style="float: right; margin-top: 5px;" class="btn"><b>{{appConstants.update}}</b></button></a>
+
+  <div style="width:100%;">
+    <div style="text-align:center; margin-top:170px;">
+      <img src="./assets/img/logo.gif" width="400px;" /><br>
+      <span id="myBtn" style="cursor: pointer;">
+        <img src="./assets/img/login.png" width="200px;" (click)="showLoginWindow();" />
+      </span>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal navigation" *ngIf="showLogin">
+
+      <!-- Modal content -->
+      <div class="modal-content" style="text-align:center;">
+        <span class="close" (click)="closeLoginWindow();">&times;</span>
+        <!--  <form action=""> -->
+        <div class="container-login">
+          <!--  <label>OPERATER ID.</label><br><br>
+            <input [(ngModel)]="operatorId" class="model-text" type="text" placeholder="Enter Your Operater Id."> -->
+          <label>MACHINE KEY</label><br><br>
+          <input [(ngModel)]="user.userName" class="model-text" type="text" placeholder="Enter Your Machine Key"><br>
+          <label>PASSWORD</label><br><br>
+          <input [(ngModel)]="user.password" class="model-text" type="password" placeholder="Enter Your Password"><br>
+          <button class="btn" type=" submit" (click)="login();"><b>{{appConstants.login}}</b></button>
+        </div>
+        <!-- </form> -->
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</ion-content>

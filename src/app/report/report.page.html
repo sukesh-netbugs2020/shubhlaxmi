@@ -1,0 +1,144 @@
+<ion-content class="ion-padding">
+
+  <div>
+    <table class="filter-container">
+      <tbody>
+        <tr>
+          <td colspan="7" class="main-nav">
+            <div style="display: inline-block;	float:left; padding:14px;">
+              <a (click)="backToHome();" class="btn-back"> <img src="./assets/icon/back.svg" width="20px;" /> BACK </a>
+            </div>
+            <div class="main-nav-head" style="margin-bottom:9px; margin-left: -100px;">
+              REPORT
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="column" style="width: 25%">&nbsp;</div>
+      <div class="column"
+        style="width:50%; background-color:#eaeaea; padding:10px; border-radius:5px;margin-top:10px; box-shadow: 5px 5px 5px grey;">
+        <table class="filter-container">
+          <tbody>
+            <!--  <tr>
+              <td colspan="1"></td>
+              <td class="column bottom-but">
+                <ion-select placeholder="Select Machine" [(ngModel)]="selectedMachineId" (ionChange)="changeMachine();">
+                  <ion-select-option *ngFor="let machine of machinesArr" [value]="machine.id">
+                    {{machine.machine_name}}</ion-select-option>
+                </ion-select>
+              </td>
+              <td class="column bottom-but"></td>
+            </tr> -->
+            <tr>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getReports('Last 7 days');"> Last 7 days </a>
+                </div>
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getReports('Yesterday');"> Yesterday </a>
+                </div>
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-bottom" (click)="getReports('Today');"> Today's </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="filter-container">
+          <tbody>
+            <tr>
+              <td>
+                <input [(ngModel)]="fromDate" placeholder="{{appConstants.fromDate}}" type="text" readonly
+                  (click)="openFromDatePicker();">
+              </td>
+              <td>
+                <input [(ngModel)]="toDate" placeholder="{{appConstants.toDate}}" type="text" readonly
+                  (click)="openToDatePicker();">
+              </td>
+              <td>
+                <div class="column bottom-but">
+                  <a class="btn-grad" (click)="getReports('By Date');"> Search </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column" style="width: 25%">&nbsp;</div>
+    </div>
+  </div>
+
+  <div style="height: 500px;overflow-y: auto;min-height: 500px; top: 10px;">
+    <h3 style="text-align: center; margin-top: 20;">{{this.reportName}}</h3>
+    <table class="report-tabel">
+      <tbody>
+        <tr *ngIf="reportsArr.length !== 0" style="padding: 10px; background: lightgray;">
+          <td colspan="3">Total {{appConstants.plAmt}} : <h4 [ngClass]="totalPlAmt >= 0 ?'positive-amt':'negative-amt'">
+              {{this.totalPlAmt.toFixed(2)}}</h4>
+          </td>
+          <td colspan="3">Total {{appConstants.machineAmt}} : <h4
+              [ngClass]="totalMachineAmt >= 0 ?'positive-amt':'negative-amt'">{{this.totalMachineAmt.toFixed(2)}}</h4>
+          </td>
+          <td colspan="2">Total {{appConstants.companyAmt}} : <h4
+              [ngClass]="totalCompAmt >= 0 ?'positive-amt':'negative-amt'">{{this.totalCompAmt.toFixed(2)}}</h4>
+          </td>
+        </tr>
+        <tr>
+          <!-- <th>{{appConstants.srNo}}</th> -->
+          <th>{{appConstants.date}}</th>
+          <th>{{appConstants.machineIdLabel}}</th>
+          <th>{{appConstants.totalSale}}</th>
+          <th>{{appConstants.winPoint}}</th>
+          <!-- <th>{{appConstants.winNumber}}</th> -->
+          <!-- <th>{{appConstants.agentShare}}</th> -->
+          <th>{{appConstants.plAmt}}</th>
+          <th>{{appConstants.commission}}</th>
+          <th>{{appConstants.machineAmt}}</th>
+          <th>{{appConstants.companyAmt}}</th>
+        </tr>
+        <tr *ngFor=" let report of reportsArr; let i=index;">
+          <!-- <td>{{i+1}}</td> -->
+          <td>
+            {{report.datetime | date: 'dd-MM-yyyy'}}
+            <!-- {{report.id ? dateFunctions.convertStringDate(utility.convertNoIntoDate(report.id), 'dd-MM-yyyy') : '-'}} -->
+            <!-- {{report.id}} -->
+          </td>
+          <td>{{report.machine_id}}</td>
+          <td>{{report.sale}}</td>
+          <td>{{report.winPoint}}</td>
+          <!-- <td>{{report.winning_number}}</td> -->
+          <!--   <td>{{report.agent_share}} %</td>-->
+          <td>{{report.profitLossAmount}} </td>
+          <td>{{report.commissionAmount}}</td>
+          <td>{{report.machineAmount}} </td>
+          <td>{{report.companyAmount}}</td>
+        </tr>
+
+        <tr *ngIf="reportsArr.length === 0">
+          <td colspan="8">No Data Found</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+</ion-content>
+<ion-footer *ngIf="reportsArr.length !== 0">
+  <div class="row">
+    <div class="column" style="width: 45%">&nbsp;</div>
+    <div class="column" style="width:10%;">
+      <div class="column bottom-but" style="text-align: center;">
+        <a class="btn-bottom" style="width: 100px;" (click)="getReportsPrint();"> {{appConstants.print}} </a>
+      </div>
+    </div>
+    <div class="column" style="width: 45%">&nbsp;</div>
+  </div>
+
+</ion-footer>

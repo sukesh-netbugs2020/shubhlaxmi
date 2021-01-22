@@ -1,0 +1,61 @@
+.report-tabel {
+  font-family: "Rubik", sans-serif;
+  border-radius: 1px;
+  border: 1px solid gray;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.report-tabel td {
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.report-tabel th {
+    border: 1px solid gray;
+    padding: 5px;
+    color: white;
+    background: black;
+  }
+
+.btn-back {
+  border-radius:5px;
+  padding:7px;
+  font-size:15px;
+  background-color:#d42300;
+  color:white;
+  text-decoration:none;  
+  cursor: pointer;
+  }
+
+
+  .filter-container {
+    font-family: "Rubik", sans-serif;
+    border-radius: 1px;
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+  }
+  
+  .filter-container td,
+  .filter-container th {
+    // border: 2px solid white;
+    padding: 1px;
+  }
+
+  /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.positive-amt {
+  color: green;
+}
+
+
+.negative-amt {
+  color: red;
+}
